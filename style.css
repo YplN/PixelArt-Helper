@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color:white;
+  font-family: 'Ubuntu', sans-serif;
+}
+canvas {
+  display: block;
+
+  font-family: 'Teko', sans-serif;
+  text-align:center;
+}
+
+h2{
+  text-align:center;
+}
+
+.consignes{
+}
+
+.input_interactive {
+    width: 50px;
+    margin: .25em;
+    padding-bottom: 0.1em;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.coordinates{
+  margin : 0 auto;
+}
+
+.data{
+  margin : 0 auto;
+}

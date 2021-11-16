@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="p5.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&amp;family=Ubuntu:ital,wght@0,300;1,400&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <script src="sketch.js"></script>
+  <h1>Comment m'utiliser?</h1>
+
+  <div class="consignes">
+    <ul>
+      <li>
+        Rentrez les coordonnées de départ de votre région (coin en haut à gauche) et celles de fin (coin en bas à
+        droite).
+      </li>
+
+      <li>
+        Si vous le souhaitez, changez la taille de l'affichage des pixels.
+      </li>
+
+      <li>
+        Choisir le fichier correspondant au dessin voulu. Note : si l'image est entièrement blanche, changez une valeur
+        quelconque dans les coordoonées, cela devrait résoudre le problème (vous pouvez ensuite revenir à la valeur
+        initiale).
+      </li>
+      <li>
+        Passer la souris sur un pixel pour faire apparaître les coordonnées de
+        celui-ci et son code hexadécimal correspondant.
+      </li>
+      <li>
+        Si vous cliquez sur un pixel, le code hexadécimal sera copié dans
+        votre presse-papier.
+      </li>
+
+
+      <li>
+        <strong>(BETA) En cliquant sur Comparer, cela affiche les différences de pixels entre l'image et le drapeau réel
+          (merci à CoDaTi#3827 pour son API ! ❤ https://codati.ovh/doc/)
+        </strong>
+      </li>
+    </ul>
+
+    <div>
+      <fieldset class="data">
+        <legend> Coordonnées pour votre image </legend>
+        <div class="coordinates">
+          x:<input type="number" name="xS" id="xS" class="input_interactive" value="156" min="0" max="501">
+          y:<input type="number" name="yS" id="yS" class="input_interactive" value="80" min="0" max="250">
+        </div>
+
+        <div class="coordinates">
+          x:<input type="number" name="xE" id="xE" class="input_interactive" value="196" min="0" max="501">
+          y:<input type="number" name="yE" id="yE" class="input_interactive" value="100" min="0" max="250">
+        </div>
+
+        <div>
+          échelle:<input type="number" name="s" id="s" class="input_interactive" value="15" min="2" max="20">
+        </div>
+
+      </fieldset>
+
+    </div>
+
+
+    Bon dessin !
+
+  </div>
+
+
+  <script>
+    $.getJSON(
+      'https://api.codati.ovh/pixels/zone/?minx=1&miny=1&maxx=3&maxy=3',
+      function (data) {
+        console.log(data[0]);
+      });
+  </script>
+
+</body>
+
+</html>
