@@ -189,16 +189,22 @@ function generatePixels() {
     }
   }
 
+  nChanges = null;
+
   resizeCanvas(2 * BX + SIZE * W, 2 * BY + SIZE * H);
 
 }
 
 
-let xS, yS, xE, yE;
-let xSo, ySo, xEo, yEo;
-let update = false;
+// let xS, yS, xE, yE;
+// let xSo, ySo, xEo, yEo;
+// let update = false;
+
+let SIZEo;
 
 let selP = null;
+
+let nChanges = null;
 
 function setup() {
 
@@ -208,7 +214,7 @@ function setup() {
 
 
   input = createFileInput(handleFile);
-  input.position(250, top - 70);
+  input.parent("upload");
 
 
   createCanvas(W * SIZE + 2 * BX, H * SIZE + 2 * BY);
@@ -218,19 +224,21 @@ function setup() {
   xE = parseInt(document.getElementById('xE').value);
   yE = parseInt(document.getElementById('yE').value);
   SIZE = parseInt(document.getElementById('s').value);
+  SIZEo = SIZE;
 
   generatePixels();
 
   var buttonGenerate = createButton("Générer");
   buttonGenerate.mousePressed(generatePixels);
   buttonGenerate.id('generateButton');
-  buttonGenerate.position(250, top);
+  // buttonGenerate.position(250, top + 20);
+  buttonGenerate.parent("buttons");
 
-
-  var buttonGenerate = createButton("Comparer");
-  buttonGenerate.mousePressed(getDataFromURL);
-  buttonGenerate.id('compareButton');
-  buttonGenerate.position(350, top);
+  var buttonCompare = createButton("Comparer");
+  buttonCompare.mousePressed(getDataFromURL);
+  buttonCompare.id('compareButton');
+  // buttonGenerate.position(350, top + 20);
+  buttonCompare.parent("buttons");
 
 }
 
@@ -238,16 +246,16 @@ function setup() {
 function draw() {
   background(255);
 
-  // var viewportOffset = document.getElementsByTagName('canvas')[0].getBoundingClientRect();
-  // var top = viewportOffset.top;
-  // input.position(250, top - 50);
-  // buttonGenerate.position(250, top);
-
   xS = parseInt(document.getElementById('xS').value);
   yS = parseInt(document.getElementById('yS').value);
   xE = parseInt(document.getElementById('xE').value);
   yE = parseInt(document.getElementById('yE').value);
   SIZE = parseInt(document.getElementById('s').value);
+
+  if (SIZEo != SIZE) {
+    resizeCanvas(2 * BX + SIZE * W, 2 * BY + SIZE * H);
+    SIZEo = SIZE;
+  }
 
 
   // if (xS != xSo || yS != ySo || xE != xEo || yE != yEo || update) {
@@ -285,6 +293,19 @@ function draw() {
 
   }
 
+  if (nChanges != null) {
+    textSize(25);
+    noStroke();
+    fill(0);
+    textAlign(CENTER);
+    let textToShow = `Il reste ${nChanges} pixel` + (nChanges < 2 ? "" : "s") + ` à corriger (~${nChanges*2} min)`
+    if (nChanges == 0) {
+      textToShow = "Félicitations !!"
+    }
+
+    text(textToShow, width / 2, height - (BY / 2));
+  }
+
 
   // image(flagImg, 0, 0);
 }
@@ -314,6 +335,7 @@ function getDataFromURL() {
       let n = 0;
       // let False = [];
 
+
       for (const pR of data) {
 
         let iR = getIFromX(parseInt(pR['x']));
@@ -331,8 +353,11 @@ function getDataFromURL() {
           p.realC = hexToRgb(colR);
           n++;
 
+        } else {
+          p.correct = true;
         }
       }
+      nChanges = n;
 
     });
 }

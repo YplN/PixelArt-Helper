@@ -1,38 +1,75 @@
-html, body {
-  margin: 0;
+body {
+  margin: 0 auto;
   padding: 0;
-  background-color:white;
+  background-color: white;
   font-family: 'Ubuntu', sans-serif;
-}
-canvas {
-  display: block;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  font-family: 'Teko', sans-serif;
-  text-align:center;
-}
-
-h2{
-  text-align:center;
 }
 
-.consignes{
+
+h2 {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+li {
+  padding: 0.2em 0;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
 .input_interactive {
-    width: 50px;
-    margin: .25em;
-    padding-bottom: 0.1em;
-    text-align: center;
-    border: none;
-    border-bottom: 1px solid black;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+  width: 50px;
+  margin: .25em;
+  padding-bottom: 0.1em;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
 }
 
-.coordinates{
-  margin : 0 auto;
+.coordinates {
+  margin: 0 auto;
+  padding: 10px;
 }
 
-.data{
-  margin : 0 auto;
+.coordinates:nth-last-child(1) {
+  padding-bottom: 40px;
+}
+
+ul {
+  text-align: left;
+  padding-bottom: 20px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.consignes {
+  text-align: center;
+}
+
+.data {
+  margin: 0 auto;
+}
+
+#buttons {
+  margin: 30px auto;
+}
+
+#generateButton,
+#compareButton {
+  margin: 10px;
 }

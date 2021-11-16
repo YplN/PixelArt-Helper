@@ -39,22 +39,24 @@
       </li>
 
       <li>
-        Choisir le fichier correspondant au dessin voulu. Note : si l'image est entièrement blanche, changez une valeur
-        quelconque dans les coordoonées, cela devrait résoudre le problème (vous pouvez ensuite revenir à la valeur
-        initiale).
+        Choisir le fichier correspondant au dessin voulu.
+      </li>
+      <li>
+        <strong>Cliquez sur Générer pour avoir le rendu pixelisé de votre image.</strong>
       </li>
       <li>
         Passer la souris sur un pixel pour faire apparaître les coordonnées de
         celui-ci et son code hexadécimal correspondant.
       </li>
       <li>
-        Si vous cliquez sur un pixel, le code hexadécimal sera copié dans
-        votre presse-papier.
+        Si vous cliquez sur un pixel, <strong>le code hexadécimal sera copié automatiquement dans
+          votre presse-papier.</strong>
       </li>
 
 
       <li>
         <strong>(BETA) En cliquant sur Comparer, cela affiche les différences de pixels entre l'image et le drapeau réel
+          AUX MÊMES COORDONNEES
           (merci à CoDaTi#3827 pour son <a href="https://codati.ovh/doc/">API</a> ! ❤ )
         </strong>
       </li>
@@ -62,38 +64,36 @@
 
     <div>
       <fieldset class="data">
-        <legend> Coordonnées pour votre image </legend>
+        <legend> Valeurs à renseigner </legend>
         <div class="coordinates">
+          <em>Début (coin en haut à gauche)</em><br />
           x:<input type="number" name="xS" id="xS" class="input_interactive" value="156" min="0" max="501">
           y:<input type="number" name="yS" id="yS" class="input_interactive" value="80" min="0" max="250">
         </div>
 
+
         <div class="coordinates">
+          <em>Fin (coin en bas à droite)</em><br />
           x:<input type="number" name="xE" id="xE" class="input_interactive" value="196" min="0" max="501">
           y:<input type="number" name="yE" id="yE" class="input_interactive" value="100" min="0" max="250">
         </div>
 
-        <div>
+        <div class="coordinates">
           échelle:<input type="number" name="s" id="s" class="input_interactive" value="15" min="2" max="20">
         </div>
+
+        <div id="upload"></div>
 
       </fieldset>
 
     </div>
 
+    <div id="buttons"></div>
 
-    Bon dessin !
+    Bon dessin et bon courage 💛 !
 
   </div>
 
-
-  <script>
-    $.getJSON(
-      'https://api.codati.ovh/pixels/zone/?minx=1&miny=1&maxx=3&maxy=3',
-      function (data) {
-        console.log(data[0]);
-      });
-  </script>
 
 </body>
 
