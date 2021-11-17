@@ -25,84 +25,93 @@
 
 <body>
     <script src="sketch.js"></script>
-    <h1>Comment m'utiliser?</h1>
 
-    <div class="consignes">
-        <ul>
-            <li>
-                Rentrez les coordonnées de départ de votre région (coin en haut à gauche) et celles de fin (coin en bas
-                à droite).
-            </li>
+    <main>
+        <div class="consignes">
+            <div id="how-to">
+                <h1>Comment m'utiliser?</h1>
+                <ul>
+                    <li>
+                        Rentrez les coordonnées de départ de votre région (coin en haut à gauche) et celles de fin (coin
+                        en
+                        bas
+                        à droite).
+                    </li>
 
-            <li>
-                Si vous le souhaitez, changez la taille de l'affichage des pixels.
-            </li>
+                    <li>
+                        Si vous le souhaitez, changez la taille de l'affichage des pixels.
+                    </li>
 
-            <li>
-                Choisir le fichier correspondant au dessin voulu.
-            </li>
-            <li>
-                <strong>Cliquez sur Générer pour avoir le rendu pixelisé de votre image.</strong>
-            </li>
-            <li>
-                Passer la souris sur un pixel pour faire apparaître les coordonnées de celui-ci et son code hexadécimal
-                correspondant.
-            </li>
-            <li>
-                Si vous cliquez sur un pixel, <strong>le code hexadécimal sera copié automatiquement dans
-                    votre presse-papier.</strong>
-            </li>
-
-
-            <li>
-                <strong>(BETA) En cliquant sur Comparer, cela affiche les différences de pixels entre l'image et le
-                    drapeau réel
-                    AUX MÊMES COORDONNEES
-                    (merci à CoDaTi#3827 pour son <a href="https://codati.ovh/doc/">API</a> ! ❤ )
-                </strong>
-            </li>
+                    <li>
+                        Choisir le fichier correspondant au dessin voulu.
+                    </li>
+                    <li>
+                        <strong>Cliquez sur Générer pour avoir le rendu pixelisé de votre image.</strong>
+                    </li>
+                    <li>
+                        Passer la souris sur un pixel pour faire apparaître les coordonnées de celui-ci et son code
+                        hexadécimal
+                        correspondant.
+                    </li>
+                    <li>
+                        Si vous cliquez sur un pixel, <strong>le code hexadécimal sera copié automatiquement dans
+                            votre presse-papier.</strong>
+                    </li>
 
 
-            <li>
-                En cliquant sur Exporter, vous copiez tous les hexadecimaux de votre image <strong>dans votre
-                    presse-papier.</strong>
-            </li>
-        </ul>
-
-        <div>
-            <fieldset class="data">
-                <legend> Valeurs à renseigner </legend>
-                <div class="coordinates">
-                    <em>Début (coin en haut à gauche)</em><br /> x:
-                    <input type="number" name="xS" id="xS" class="input_interactive" value="156" min="0" max="501"> y:
-                    <input type="number" name="yS" id="yS" class="input_interactive" value="80" min="0" max="250">
-                </div>
+                    <li>
+                        <strong>(BETA) En cliquant sur Comparer, cela affiche les différences de pixels entre l'image et
+                            le
+                            drapeau réel
+                            AUX MÊMES COORDONNEES
+                            (merci à CoDaTi#3827 pour son <a href="https://codati.ovh/doc/">API</a> ! ❤ )
+                        </strong>
+                    </li>
 
 
-                <div class="coordinates">
-                    <em>Fin (coin en bas à droite)</em><br /> x:
-                    <input type="number" name="xE" id="xE" class="input_interactive" value="196" min="0" max="501"> y:
-                    <input type="number" name="yE" id="yE" class="input_interactive" value="100" min="0" max="250">
-                </div>
+                    <li>
+                        En cliquant sur Exporter, vous copiez tous les hexadecimaux de votre image <strong>dans votre
+                            presse-papier.</strong>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="coordinates">
-                    échelle:
-                    <div id="slider">
+            <div>
+                <fieldset class="data">
+                    <legend> Valeurs à renseigner </legend>
+                    <div class="coordinates">
+                        <em>Début (coin en haut à gauche)</em><br /> x:
+                        <input type="number" name="xS" id="xS" class="input_interactive" value="156" min="0" max="501">
+                        y:
+                        <input type="number" name="yS" id="yS" class="input_interactive" value="80" min="0" max="250">
                     </div>
-                </div>
 
-                <div id="upload"></div>
 
-            </fieldset>
+                    <div class="coordinates">
+                        <em>Fin (coin en bas à droite)</em><br /> x:
+                        <input type="number" name="xE" id="xE" class="input_interactive" value="196" min="0" max="501">
+                        y:
+                        <input type="number" name="yE" id="yE" class="input_interactive" value="100" min="0" max="250">
+                    </div>
+
+                    <div class="coordinates">
+                        échelle:
+                        <div id="slider">
+                        </div>
+                    </div>
+
+                    <div id="upload"></div>
+
+                </fieldset>
+
+            </div>
+
+            <div id="buttons"></div>
+
+            Bon dessin et bon courage 💛 !
 
         </div>
-
-        <div id="buttons"></div>
-
-        Bon dessin et bon courage 💛 !
-
-    </div>
-
+    </main>
 
 </body>
 

@@ -3,7 +3,7 @@ body {
     padding: 0;
     background-color: white;
     font-family: 'Ubuntu', sans-serif;
-    width: 85%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,4 +65,20 @@ ul {
 
 #buttons button {
     margin: 30px 20px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+}
+
+#how-to {
+    width: 100%;
+}
+
+@media (max-width:1000px) {
+    main {
+        flex-direction: column;
+    }
+
 }

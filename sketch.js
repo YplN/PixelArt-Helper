@@ -242,8 +242,10 @@ function setup() {
     buttonExport.id("export");
     document.getElementById("export").title = "Copier dans le presse-papier";
 
-
-    let defaultSize = min(20, max(2, 0.75 * ((window.innerWidth - 2 * BX) / W)));
+    let ratio = 0.5;
+    if (window.innerWidth < 1000)
+        ratio = 0.9;
+    let defaultSize = min(20, max(2, ratio * ((window.innerWidth - 2 * BX) / W)));
 
     slider = createSlider(2, 20, defaultSize, 0.1);
     slider.parent('slider');
@@ -328,8 +330,10 @@ function handleFile(file) {
         xS = parseInt(document.getElementById('xS').value);
         xE = parseInt(document.getElementById('xE').value);
         W = abs(xE - xS) + 1;
-
-        let defaultSize = min(20, max(2, 0.75 * (window.innerWidth / W)));
+        let ratio = 0.5;
+        if (window.innerWidth < 1000)
+            ratio = 0.9;
+        let defaultSize = min(20, max(2, ratio * ((window.innerWidth - 2 * BX) / W)));
         document.getElementById('mySlider').value = defaultSize;
 
         console.log(document.getElementById('mySlider').value)
