@@ -26,7 +26,7 @@ function randomColor() {
     // return(color(k*255/861));
 }
 
-var rgbToHex = function(rgb) {
+var rgbToHex = function (rgb) {
     var hex = Number(rgb).toString(16);
     if (hex.length < 2) {
         hex = "0" + hex;
@@ -42,7 +42,7 @@ function hexToRgb(hex) {
 
 
 
-var fullColorHex = function(r, g, b) {
+var fullColorHex = function (r, g, b) {
     var red = rgbToHex(r);
     var green = rgbToHex(g);
     var blue = rgbToHex(b);
@@ -196,10 +196,6 @@ function generatePixels() {
 }
 
 
-// let xS, yS, xE, yE;
-// let xSo, ySo, xEo, yEo;
-// let update = false;
-
 let SIZEo;
 
 let selP = null;
@@ -228,19 +224,23 @@ function setup() {
     var buttonGenerate = createButton("Générer");
     buttonGenerate.mousePressed(generatePixels);
     buttonGenerate.id('generateButton');
-    // buttonGenerate.position(250, top + 20);
     buttonGenerate.parent("buttons");
+    buttonGenerate.id("generate");
+    document.getElementById("generate").title = "Générer l'image pixelisée à partir du fichier";
 
     var buttonCompare = createButton("Comparer");
     buttonCompare.mousePressed(getDataFromURL);
     buttonCompare.id('compareButton');
-    // buttonGenerate.position(350, top + 20);
     buttonCompare.parent("buttons");
+    buttonCompare.id("compare");
+    document.getElementById("compare").title = "Comparer avec le vrai drapeau";
 
 
     var buttonExport = createButton("Exporter");
     buttonExport.mousePressed(exportData);
     buttonExport.parent("buttons");
+    buttonExport.id("export");
+    document.getElementById("export").title = "Copier dans le presse-papier";
 
 
     let defaultSize = min(20, max(2, 0.75 * ((window.innerWidth - 2 * BX) / W)));
@@ -274,18 +274,6 @@ function draw() {
     }
 
 
-    // if (xS != xSo || yS != ySo || xE != xEo || yE != yEo || update) {
-    //   generatePixels();
-    // }
-
-    // if(urlN != null)
-    //   {
-    //     newImg=loadImage(urlN);
-    //     url = urlN;
-    //   }
-    // if(newImg && urlN != url){
-    //   image(newImg, 0, 0);
-    // }
 
     for (let p of P) {
         p.show();
@@ -322,14 +310,12 @@ function draw() {
         text(textToShow, width / 2, height - (BY / 2));
     }
 
-
-    // image(flagImg, 0, 0);
 }
 
 function getPixelFromMouse() {
     let i = floor((mouseX - BX) / SIZE);
     let j = floor((mouseY - BY) / SIZE);
-    // console.log("i", i,"(", i+DX,')', "j", j,"(", j+DY,')', i*H+j, P.length)
+
     return P[i * H + j];
 }
 
@@ -358,10 +344,9 @@ function handleFile(file) {
 function getDataFromURL() {
     // console.log(`https://api.codati.ovh/pixels/zone/?minx=${xS}&miny=${yS}&maxx=${xE}&maxy=${yE}`);
     $.getJSON(`https://api.codati.ovh/pixels/zone/?minx=${xS}&miny=${yS}&maxx=${xE}&maxy=${yE}`,
-        function(data) {
+        function (data) {
             let n = 0;
             // let False = [];
-
 
             for (const pR of data) {
 
@@ -400,7 +385,6 @@ function mouseClicked() {
         } else {
             selP = p;
         }
-        // console.log(p.hex, p.j, p.i);
 
         var dummy = document.createElement("textarea");
         document.body.appendChild(dummy);
