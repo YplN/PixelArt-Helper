@@ -147,13 +147,70 @@ function drawCoordinates() {
     noStroke();
     fill(0);
     textAlign(CENTER);
-    text(floor((mouseX - BX) / SIZE) + DX, round(mouseX / SIZE) * SIZE, BY - 10);
+    text(Math.trunc((mouseX - BX) / SIZE) + DX, Math.trunc(mouseX / SIZE) * SIZE + SIZE / 2, BY - 10);
     textAlign(RIGHT, BASELINE);
-    text(
-        floor((mouseY - BY) / SIZE) + DY,
-        BX - 10,
-        round(mouseY / SIZE) * SIZE + 10
-    );
+    text(Math.floor((mouseY - BY) / SIZE) + DY, BX - 10, Math.floor((mouseY) / SIZE) * SIZE + 10);
+
+}
+
+
+function drawCoordinates(p) {
+
+    if (p) {
+        textSize(20);
+        noStroke();
+        fill(0);
+
+        textAlign(CENTER);
+        text("x : " + (p.i + xS), p.i * SIZE + BX + SIZE / 2, BY - 12);
+
+        textAlign(RIGHT, BASELINE);
+        text("y : " + (p.j + yS), BX - 10, p.j * SIZE + SIZE + BY - 2);
+    }
+}
+
+
+
+
+function drawCoordinatesSelectedPixel() {
+
+    if (selP) {
+        textSize(20);
+
+        let xCoord = textWidth("x : " + selP.x) + 20;
+        let yCoord = textWidth("y : " + selP.y) + 20;
+
+        noStroke();
+        fill(0);
+        rectMode(CENTER);
+        rect(selP.i * SIZE + BX + SIZE / 2, height - 1.5 * BY + 25, xCoord, 30, 5);
+
+        rect(width - BX + 10 + yCoord / 2, selP.j * SIZE + SIZE + BY - 7, yCoord, 30, 5);
+
+        fill(255);
+        textAlign(CENTER, BASELINE);
+        text("x : " + (selP.i + xS), selP.i * SIZE + BX + SIZE / 2, height - 1.5 * BY + 32);
+
+        textAlign(CENTER, BASELINE);
+        text("y : " + (selP.j + yS), width - BX + 8 + yCoord / 2, selP.j * SIZE + SIZE + BY - 2);
+    }
+}
+
+
+function drawRemainingChanges() {
+    if (nChanges != null) {
+        textSize(25);
+        noStroke();
+        fill(0);
+        textAlign(CENTER);
+        let textToShow = `Il reste ${nChanges} pixel` + (nChanges < 2 ? "" : "s") + ` à corriger (~${nChanges*2} min)`
+        if (nChanges == 0) {
+            textToShow = "Félicitations !!"
+        }
+
+        text(textToShow, width / 2, height - 0.5 * BY);
+    }
+
 }
 
 function mouseOnFlag() {
@@ -191,7 +248,7 @@ function generatePixels() {
 
     nChanges = null;
 
-    resizeCanvas(2 * BX + SIZE * W, 2 * BY + SIZE * H);
+    resizeCanvas(2 * BX + SIZE * W, 2.5 * BY + SIZE * H);
 
 }
 
@@ -255,7 +312,7 @@ function setup() {
     SIZEo = SIZE;
 
 
-    createCanvas(W * SIZE + 2 * BX, H * SIZE + 2 * BY);
+    createCanvas(W * SIZE + 2 * BX, H * SIZE + 2.5 * BY);
 
 
 }
@@ -271,7 +328,7 @@ function draw() {
     SIZE = slider.value();
 
     if (SIZEo != SIZE) {
-        resizeCanvas(2 * BX + SIZE * W, 2 * BY + SIZE * H);
+        resizeCanvas(2 * BX + SIZE * W, 2.5 * BY + SIZE * H);
         SIZEo = SIZE;
     }
 
@@ -279,9 +336,7 @@ function draw() {
 
     for (let p of P) {
         p.show();
-        if (!p.correct) {
-            p.showBorders();
-        }
+
 
     }
 
@@ -290,28 +345,20 @@ function draw() {
         selP.showBorders();
     }
 
+
+    drawCoordinatesSelectedPixel();
+
     if (mouseOnFlag()) {
         let p = getPixelFromMouse();
         p.showBorders();
         drawCoordinates();
         p.showInfo();
 
+        drawCoordinates(p);
 
     }
 
-    if (nChanges != null) {
-        textSize(25);
-        noStroke();
-        fill(0);
-        textAlign(CENTER);
-        let textToShow = `Il reste ${nChanges} pixel` + (nChanges < 2 ? "" : "s") + ` à corriger (~${nChanges*2} min)`
-        if (nChanges == 0) {
-            textToShow = "Félicitations !!"
-        }
-
-        text(textToShow, width / 2, height - (BY / 2));
-    }
-
+    drawRemainingChanges();
 }
 
 function getPixelFromMouse() {
