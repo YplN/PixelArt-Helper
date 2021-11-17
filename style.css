@@ -1,75 +1,68 @@
 body {
-  margin: 0 auto;
-  padding: 0;
-  background-color: white;
-  font-family: 'Ubuntu', sans-serif;
-  width: 85%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+    font-family: 'Ubuntu', sans-serif;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-
 h2 {
-  text-align: center;
+    text-align: center;
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 li {
-  padding: 0.2em 0;
+    padding: 0.2em 0;
 }
 
 fieldset {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
 }
 
 .input_interactive {
-  width: 50px;
-  margin: .25em;
-  padding-bottom: 0.1em;
-  text-align: center;
-  border: none;
-  border-bottom: 1px solid black;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
+    width: 50px;
+    margin: .25em;
+    padding-bottom: 0.1em;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .coordinates {
-  margin: 0 auto;
-  padding: 10px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .coordinates:nth-last-child(1) {
-  padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 ul {
-  text-align: left;
-  padding-bottom: 20px;
-  width: 70%;
-  margin: 0 auto;
+    text-align: left;
+    padding-bottom: 20px;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .consignes {
-  text-align: center;
+    text-align: center;
 }
 
 .data {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
-#buttons {
-  margin: 30px auto;
-}
-
-#generateButton,
-#compareButton {
-  margin: 10px;
+#buttons button {
+    margin: 30px 20px;
 }
